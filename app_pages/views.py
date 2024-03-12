@@ -1,23 +1,26 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 
-# Create your views here.
-def bosh_sahiyfa(request):
-    return render(request, 'index5.html')
-def python(request):
-    return render(request, 'index1.html')
 
-def java(request):
-    return render(request ,'index2.html')
+def index(request):
+    oylar =[
+    {'id ' : 1, 'oy': 'yanvar' , 'kunligi': 'yanavar 31 kun bor' },
+    {'id ' : 2, 'oy': 'fevral', 'kunligi': 'fevral 28 kun bor' },
+    {'id ' : 3, 'oy': 'mart' , 'kunligi': 'mart 31 kun bor'},
+    {'id ' : 4, 'oy': 'aprel','kunligi': 'aprel 30 kun bor' },
+    {'id ' : 5, 'oy': 'may' , 'kunligi': 'may 31 kun bor'},
+    {'id ' : 6, 'oy': 'iyun', 'kunligi': 'iyun 30 kun bor' },
+    {'id ' : 7, 'oy': 'iyul' , 'kunligi': 'iyul 31 kun bor'},
+    {'id ' : 8, 'oy': 'avgust' ,'kunligi': 'avgust 31 kun bor'},
+    {'id ' : 9, 'oy': 'sentabr', 'kunligi': 'sentabr 30 kun bor'},
+    {'id ' : 10, 'oy': 'oktabt' , 'kunligi': 'oktabr 31 kun bor'},
+    {'id ' : 11, 'oy': 'noyabr', 'kunligi': 'noyabr 30 kun bor' },
+    {'id ' : 12, 'oy': 'dekabr', 'kunligi': 'dekabr 31 kun bor' }
 
-def django(request):
-    
-    return render(request,'index.html')
+    ]
 
-def cpp(request):
-    
-    return render(request,'index3.html')
+    return render(request, 'index5.html', context={'oylar': oylar})
 
-def go (request):
-    
-    return render(request, 'index4.html')
+
+def kunlari(request, pk):
+    global oylar
+    return render(request, 'kunlar.html', context={'man': oylar[pk-1]})
